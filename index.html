@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Study: Courage, Leadership, and God's Sovereignty</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FCD34D; /* Gold background */
+            color: #334155; /* Dark slate text */
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section-header {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3a8a; /* Dark blue */
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #f59e0b; /* Amber accent */
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        .book-section {
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* More rounded corners */
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out;
+        }
+        .book-section:hover {
+            transform: translateY(-5px);
+        }
+        .book-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0c4a6e; /* Darker blue-green */
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #bfdbfe; /* Light blue border */
+            padding-bottom: 0.75rem;
+        }
+        .verse-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+        .verse-list li {
+            background-color: #e0f2fe; /* Lighter blue */
+            border-left: 5px solid #3b82f6; /* Blue accent */
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0.75rem; /* Rounded corners for verses */
+            font-style: italic;
+            color: #1e40af; /* Darker blue text */
+        }
+        .paragraph-content {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #475569; /* Slate gray */
+            position: relative; /* Needed for absolute positioning of ::before */
+            padding-left: 1.5rem; /* Space for the bullet */
+        }
+        .paragraph-content::before {
+            content: '•'; /* Bullet character */
+            color: #f59e0b; /* Amber accent color for the bullet */
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: inherit; /* Align bullet with text line height */
+        }
+        .group-member {
+            background-color: #dbeafe; /* Very light blue */
+            padding: 0.75rem 1.25rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+            font-weight: 600;
+            color: #1e40af;
+            text-align: center;
+        }
+        .group-member:hover {
+            background-color: #93c5fd; /* Medium blue on hover */
+            transform: translateY(-3px);
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            backdrop-filter: blur(5px); /* Blur background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: fadeInScale 0.3s ease-out forwards;
+            color: #1e3a8a;
+        }
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: #94a3b8;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #ef4444; /* Red on hover */
+            text-decoration: none;
+        }
+        .modal-message {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #0c4a6e;
+        }
+        .modal-subtext {
+            font-size: 1.25rem;
+            color: #3b82f6;
+            font-style: italic;
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-8 shadow-lg">
+        <div class="container text-center">
+            <!-- New Title -->
+            <h1 class="text-2xl md:text-3xl font-bold mb-2 tracking-wide">
+                FOV BIBLE GROUP 7 - Kabage Kamau
+            </h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 tracking-wide flex items-center justify-center">
+                <!-- Jesus Cross SVG Icon - Updated to look like a crucifixion cross -->
+                <svg class="w-10 h-10 md:w-12 md:h-12 mr-3 text-yellow-300" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C10.8954 2 10 2.89543 10 4V10H4C2.89543 10 2 10.8954 2 12C2 13.1046 2.89543 14 4 14H10V20C10 21.1046 10.8954 22 12 22C13.1046 22 14 21.1046 14 20V14H20C21.1046 14 22 13.1046 22 12C22 10.8954 21.1046 10 20 10H14V4C14 2.89543 13.1046 2 12 2Z"/>
+                </svg>
+                Journey Through Scripture
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">
+                Theme: Courage, Leadership, and God’s Sovereignty
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-12">
+
+        <!-- Memory Verse Section -->
+        <section class="book-section bg-yellow-100 border-l-8 border-yellow-500 mb-12">
+            <h2 class="book-title text-yellow-800">Memory Verse</h2>
+            <p class="text-2xl md:text-3xl font-semibold text-center text-yellow-900 italic leading-snug">
+                "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."
+            </p>
+            <p class="text-lg text-center text-yellow-700 mt-4">- Joshua 1:9 (NIV)</p>
+        </section>
+
+        <!-- Joshua Section -->
+        <section class="book-section">
+            <h2 class="book-title">Book of Joshua</h2>
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Summary (NIV)</h3>
+            <p class="paragraph-content">
+                The Book of Joshua recounts the Israelites' entry into the Promised Land under the leadership of Joshua, Moses' successor. It highlights God's faithfulness in fulfilling His covenant promises to Abraham, Isaac, and Jacob. The book emphasizes the importance of courage, obedience to God's commands, and reliance on His power as the Israelites conquer various Canaanite cities, most notably Jericho, through divine intervention. It culminates in the division of the land among the twelve tribes and Joshua's farewell address, urging the people to remain faithful to the Lord. The narrative underscores God's sovereignty over nations and His unwavering commitment to His people.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Key Bible Verses (NIV)</h3>
+            <ul class="verse-list">
+                <li>Joshua 1:5 – "No one will be able to stand against you all the days of your life. As I was with Moses, so I will be with you; I will never leave you nor forsake you."</li>
+                <li>Joshua 1:9 – "Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."</li>
+                <li>Joshua 3:5 – "Joshua told the people, 'Consecrate yourselves, for tomorrow the Lord will do amazing things among you.'"</li>
+                <li>Joshua 5:13-15 – "When Joshua was by Jericho, he looked up and saw a man standing in front of him with a drawn sword in his hand... 'Neither,' he replied, 'but as commander of the army of the Lord I have now come.' Then Joshua fell facedown to the ground in reverence and asked him, 'What message does my Lord have for his servant?' The commander of the Lord’s army replied, 'Take off your sandals, for the place where you are standing is holy.' And Joshua did so."</li>
+                <li>Joshua 6:20 – "When the trumpets sounded, the army shouted, and at the sound of the trumpet, when the men gave a loud shout, the wall collapsed; so everyone charged straight in, and they took the city."</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Lesson Learnt / New Thing Learnt</h3>
+            <p class="paragraph-content">
+                A profound lesson from Joshua is the absolute necessity of divine presence and guidance for true success. While courage and strategic planning are important, the victories of Israel were ultimately orchestrated by God. The encounter with the Commander of the Lord's army in chapter 5 reveals that even Joshua, the great leader, was under a higher authority. This teaches us that leadership in God's kingdom is not about personal might or cleverness, but about humble submission to God's will and allowing Him to fight our battles. It's a reminder that God's promises are conditional on our obedience and faith, but His faithfulness remains steadfast even when ours falters.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Practical Applications</h3>
+            <p class="paragraph-content">
+                In our lives, we can apply the lessons from Joshua by stepping out in faith when God calls us to new endeavors, trusting that He will be with us just as He was with Joshua. This means confronting our fears with the assurance of God's presence, relying on His strength rather than our own, and consistently seeking His guidance through prayer and His Word. Just as the Israelites had to obey specific, sometimes seemingly illogical, commands (like marching around Jericho), we too are called to radical obedience, even when we don't fully understand God's methods. This book encourages us to consecrate ourselves for God's work, believing that He will do amazing things through us when we surrender to His sovereignty.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">KJV Perspective & Sermon Insights</h3>
+            <p class="paragraph-content">
+                The KJV translation of Joshua often emphasizes the majesty and power of God with its classic language. For example, Joshua 1:8 in KJV states, "This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night, that thou mayest observe to do according to all that is written therein: for then thou shalt make thy way prosperous, and then thou shalt have good success." This highlights the deep connection between meditating on God's Word and experiencing true prosperity and success, which is not merely material but spiritual.
+            </p>
+            <p class="paragraph-content">
+                Sermons on Joshua often focus on themes of transition, divine strategy, and conquering spiritual strongholds. You might find sermons titled "Crossing Your Jordan," exploring how to transition into new seasons of life with God's help, or "The Walls Fall Down," emphasizing the power of faith and obedience in overcoming seemingly insurmountable obstacles. Many messages also delve into "The Commander of the Lord's Army," reminding us that our ultimate victory comes from Christ leading the charge.
+            </p>
+        </section>
+
+        <!-- Judges Section -->
+        <section class="book-section">
+            <h2 class="book-title">Book of Judges</h2>
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Summary (NIV)</h3>
+            <p class="paragraph-content">
+                The Book of Judges describes a dark period in Israel's history following Joshua's death, characterized by a recurring cycle of apostasy, divine judgment through foreign oppression, the Israelites crying out to God, and God raising up "judges" to deliver them. Chapter 2 introduces this cycle, where the people abandon God, serve other gods, and are then subdued by their enemies. Chapters 6-8 focus on Gideon, a reluctant but ultimately courageous leader whom God uses to deliver Israel from the Midianites, demonstrating God's ability to save through few or many, and His preference for humility over human strength. The book starkly illustrates the consequences of disobedience and the persistent mercy of God.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Key Bible Verses (NIV)</h3>
+            <ul class="verse-list">
+                <li>Judges 2:16 – "Then the Lord raised up judges, who saved them out of the hands of these raiders."</li>
+                <li>Judges 6:12 – "When the angel of the Lord appeared to Gideon, he said, 'The Lord is with you, mighty warrior.'"</li>
+                <li>Judges 6:14 – "The Lord turned to him and said, 'Go in the strength you have and save Israel out of Midian’s hand. Am I not sending you?'"</li>
+                <li>Judges 7:2 – "The Lord said to Gideon, 'You have too many men for me to deliver Midian into their hands. In order that Israel may not boast against me that her own strength has saved her...'"</li>
+                <li>Judges 8:23 – "But Gideon told them, 'I will not rule over you, nor will my son rule over you. The Lord will rule over you.'"</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Lesson Learnt / New Thing Learnt</h3>
+            <p class="paragraph-content">
+                The Book of Judges vividly illustrates the destructive nature of spiritual compromise and the recurring cycle of sin, suffering, and salvation. It reveals that God, in His infinite patience and mercy, continually provides a way out for His people, even when they repeatedly turn away from Him. A new insight gained is how God often chooses the most unlikely individuals, like Gideon, who felt weakest and least significant, to accomplish His greatest works. This underscores that God's power is perfected in weakness, and He delights in using humble vessels to display His glory, ensuring that the victory is clearly His, not ours.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Practical Applications</h3>
+            <p class="paragraph-content">
+                From Judges, we learn to recognize and break free from cycles of sin in our own lives, understanding that true freedom comes from returning to God. When we find ourselves facing overwhelming challenges, like Gideon facing the Midianites, we are reminded that God's call comes with His empowerment. We can apply this by trusting God's unconventional methods, even when they seem counterintuitive to human logic (like reducing an army from 32,000 to 300). This book encourages us to embrace humility, acknowledge God's sovereignty in all circumstances, and cry out to Him in times of distress, knowing that He is a compassionate deliverer who hears our pleas.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">KJV Perspective & Sermon Insights</h3>
+            <p class="paragraph-content">
+                In the KJV, Judges 2:18 states, "And when the LORD raised them up judges, then the LORD was with the judge, and delivered them out of the hand of their enemies all the days of the judge: for it repented the LORD because of their groanings by reason of them that oppressed them and vexed them." This verse beautifully captures God's compassionate response to the suffering of His people, emphasizing His mercy and willingness to deliver them when they groaned under oppression.
+            </p>
+            <p class="paragraph-content">
+                Sermons on Judges often explore the dangers of spiritual apathy and the importance of remembering God's past faithfulness. Common sermon titles include "The Cycle of Sin and Grace," highlighting God's persistent grace despite human failure, and "God Uses the Weak," focusing on Gideon's story as an example of divine power working through human inadequacy. Messages might also delve into "When Everyone Does What Is Right in Their Own Eyes," addressing the chaos that ensues when there is no central moral authority, pointing to the need for God's rule.
+            </p>
+        </section>
+
+        <!-- Ruth Section -->
+        <section class="book-section">
+            <h2 class="book-title">Book of Ruth</h2>
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Summary (NIV)</h3>
+            <p class="paragraph-content">
+                The Book of Ruth is a beautiful narrative set during the chaotic period of the Judges, offering a refreshing contrast of faithfulness and loyalty amidst widespread apostasy. It tells the story of Ruth, a Moabite woman, who demonstrates unwavering devotion to her mother-in-law, Naomi, after both are widowed. Their journey back to Bethlehem leads to Ruth's encounter with Boaz, a kinsman-redeemer, who ultimately marries her and restores Naomi's family line. The book highlights themes of loyalty, kindness, God's providential care, and the concept of redemption, ultimately tracing the lineage of King David and, by extension, Jesus Christ. It's a testament to God's unseen hand working in ordinary lives.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Key Bible Verses (NIV)</h3>
+            <ul class="verse-list">
+                <li>Ruth 1:16-17 – "But Ruth replied, 'Don’t urge me to leave you or to turn back from you. Where you go I will go, and where you stay I will stay. Your people will be my people and your God my God. Where you die I will die, and there I will be buried. May the Lord deal with me, be it ever so severely, if even death separates you and me.'"</li>
+                <li>Ruth 2:12 – "May the Lord repay you for what you have done. May you be richly rewarded by the Lord, the God of Israel, under whose wings you have come to take refuge."</li>
+                <li>Ruth 3:11 – "And now, my daughter, don’t be afraid. I will do for you all that you ask. All the people of my town know that you are a woman of noble character."</li>
+                <li>Ruth 4:10 – "I have also acquired Ruth the Moabite, Mahlon’s widow, to be my wife, in order to maintain the name of the dead with his property, so that his name will not disappear from among his family or from his hometown. Today you are witnesses!"</li>
+                <li>Ruth 4:14 – "The women said to Naomi: 'Praise be to the Lord, who this day has not left you without a kinsman-redeemer. May he become famous throughout Israel!'"</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Lesson Learnt / New Thing Learnt</h3>
+            <p class="paragraph-content">
+                The Book of Ruth beautifully illustrates God's sovereign providence working through seemingly ordinary circumstances and the faithful actions of individuals. A key lesson is that God's plan unfolds even in times of national spiritual decline, often through the quiet faithfulness of those who choose to honor Him. It highlights the profound impact of loyalty and kindness, not just within family but also towards those who are vulnerable. Furthermore, the concept of the kinsman-redeemer (Boaz) provides a powerful foreshadowing of Christ, who redeems us from spiritual poverty and brings us into His family, a new thing learned for many is the depth of this redemptive imagery.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Practical Applications</h3>
+            <p class="paragraph-content">
+                We can apply the lessons of Ruth by cultivating unwavering loyalty and selfless kindness in our relationships, even when it's difficult or inconvenient. This means choosing to stick by those we love, showing compassion to strangers, and being a blessing to the marginalized, just as Ruth was to Naomi and Boaz was to Ruth. The book encourages us to trust in God's unseen hand, knowing that He is working all things for our good and His glory, even when our circumstances seem bleak. It also calls us to embrace our role as agents of redemption in the lives of others, reflecting the ultimate redemption offered by Christ.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">KJV Perspective & Sermon Insights</h3>
+            <p class="paragraph-content">
+                The KJV's poetic language enhances the beauty of Ruth's declaration in Ruth 1:16-17: "Intreat me not to leave thee, or to return from following after thee: for whither thou goest, I will go; and where thou lodgest, I will lodge: thy people shall be my people, and thy God my God: Where thou diest, will I die, and there will I be buried: the LORD do so to me, and more also, if ought but death part thee and me." This classic rendering emphasizes the depth of Ruth's commitment and devotion.
+            </p>
+            <p class="paragraph-content">
+                Sermons on Ruth often focus on themes of covenant loyalty, divine providence, and the beautiful picture of redemption. You might hear messages titled "Love and Loyalty," exploring the nature of true devotion, or "God's Unseen Hand," illustrating how God works behind the scenes in everyday events. Many sermons also delve into "The Kinsman-Redeemer," drawing parallels between Boaz's role and Christ's ultimate redemption for humanity, highlighting how God uses unexpected individuals to fulfill His grand plan.
+            </p>
+        </section>
+
+        <!-- 1 Samuel Section -->
+        <section class="book-section">
+            <h2 class="book-title">Book of 1 Samuel</h2>
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Summary (NIV)</h3>
+            <p class="paragraph-content">
+                The First Book of Samuel marks a significant transition in Israel's history, moving from the period of judges to the establishment of the monarchy. It introduces Samuel, a pivotal prophet and judge, whose birth and calling (Chapter 3) are divinely ordained. The book chronicles the people's demand for a king, leading to the anointing of Saul, Israel's first king. However, Saul's disobedience leads to God's rejection of him. Chapter 16 details God's choice of David, a humble shepherd, whom Samuel anoints as the future king, emphasizing that God looks at the heart rather than outward appearance. The book sets the stage for the Davidic dynasty and highlights themes of divine sovereignty in leadership selection, obedience, and the consequences of disobedience.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Key Bible Verses (NIV)</h3>
+            <ul class="verse-list">
+                <li>1 Samuel 3:9-10 – "So Eli told Samuel, 'Go and lie down, and if he calls you, say, "Speak, Lord, for your servant is listening."' So Samuel went and lay down in his place. The Lord came and stood there, calling as at other times, 'Samuel! Samuel!' Then Samuel said, 'Speak, for your servant is listening.'"</li>
+                <li>1 Samuel 3:19-20 – "The Lord was with Samuel as he grew up, and he let none of Samuel’s words fall to the ground. And all Israel from Dan to Beersheba knew that Samuel was attested as a prophet of the Lord."</li>
+                <li>1 Samuel 16:7 – "But the Lord said to Samuel, 'Do not consider his appearance or his height, for I have rejected him. The Lord does not look at the things people look at. People look at the outward appearance, but the Lord looks at the heart.'"</li>
+                <li>1 Samuel 16:12-13 – "So he sent for him and had him brought in. He was glowing with health and had a fine appearance and handsome features. Then the Lord said, 'Rise and anoint him; this is the one.' So Samuel took the horn of oil and anointed him in the presence of his brothers, and from that day on the Spirit of the Lord came powerfully upon David."</li>
+                <li>1 Samuel 16:18 – "One of the servants answered, 'I have seen a son of Jesse of Bethlehem who knows how to play the lyre. He is a brave man and a warrior. He speaks well and is a fine-looking man. And the Lord is with him.'"</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Lesson Learnt / New Thing Learnt</h3>
+            <p class="paragraph-content">
+                From 1 Samuel, we learn the critical importance of listening for and responding to God's voice, as exemplified by young Samuel. A profound new understanding is God's perspective on leadership: He values the condition of the heart over outward impressive qualities. Saul was chosen for his stature, but David for his heart. This teaches us that true leadership, in God's eyes, stems from a deep relationship with Him, humility, and a willingness to obey, rather than charisma or physical appearance. God's sovereignty is paramount in raising up and bringing down leaders according to His divine purpose.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">Practical Applications</h3>
+            <p class="paragraph-content">
+                We can apply the lessons from 1 Samuel by actively cultivating a listening ear for God's voice through prayer and Scripture, being ready to respond with "Speak, Lord, for your servant is listening." This means prioritizing the development of our inner character and heart attitude over external achievements or appearances, understanding that God sees beyond the surface. In leadership roles, whether in family, work, or ministry, we are called to lead with humility, integrity, and a heart that seeks to please God, rather than seeking human approval. This book encourages us to trust God's sovereign choice in all circumstances, knowing that He equips those He calls.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-3">KJV Perspective & Sermon Insights</h3>
+            <p class="paragraph-content">
+                The KJV translation of 1 Samuel 3:10 powerfully captures Samuel's submission: "And the LORD came, and stood, and called as at other times, Samuel, Samuel. Then Samuel answered, Speak; for thy servant heareth." This emphasizes the immediate and humble response to God's call. Similarly, 1 Samuel 16:7 in KJV, "But the LORD said unto Samuel, Look not on his countenance, or on the height of his stature; because I have refused him: for the LORD seeth not as man seeth; for man looketh on the outward appearance, but the LORD looketh on the heart," is a cornerstone verse, clearly articulating God's divine perspective.
+            </p>
+            <p class="paragraph-content">
+                Sermons on 1 Samuel often explore the themes of divine calling, the nature of true leadership, and the consequences of disobedience. You might find sermons titled "Hearing God's Voice," focusing on Samuel's call and how to discern God's leading today, or "A Heart After God," delving into David's character and what it means to be a person after God's own heart. Many messages also discuss "The King God Chooses vs. The King Man Chooses," contrasting Saul's reign with David's, and highlighting God's sovereignty in appointing leaders.
+            </p>
+        </section>
+
+        <!-- Group Members Section -->
+        <section class="book-section bg-purple-100 border-l-8 border-purple-500">
+            <h2 class="book-title text-purple-800">Our Bible Study Group</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="group-member" data-name="Victor Amani">Victor Amani</div>
+                <div class="group-member" data-name="Zoe Wanjiru">Zoe Wanjiru</div>
+                <div class="group-member" data-name="Mwakio Ronnie">Mwakio Ronnie</div>
+                <div class="group-member" data-name="Karoki Wade">Karoki Wade</div>
+                <div class="group-member" data-name="Namada Mwakio">Namada Mwakio</div>
+                <div class="group-member" data-name="Divine Mugisha">Divine Mugisha</div>
+                <div class="group-member" data-name="Marty Nderi">Marty Nderi</div>
+                <div class="group-member" data-name="Roni Karoki">Roni Karoki</div>
+                <div class="group-member" data-name="Marvel Grace">Marvel Grace</div>
+                <div class="group-member" data-name="Dalton Mwakio">Dalton Mwakio</div>
+                <div class="group-member" data-name="Edith Peter">Edith Peter</div>
+                <div class="group-member" data-name="Mary Njeri">Mary Njeri</div>
+                <div class="group-member" data-name="Fortune Wetungu">Fortune Wetungu</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-6 mt-12 shadow-inner">
+        <div class="container text-center text-gray-300 text-sm">
+            <p>&copy; 2025 Bible Study Group. All rights reserved.</p>
+            <p class="mt-2">"The grass withers and the flowers fall, but the word of our God endures forever." - Isaiah 40:8</p>
+        </div>
+    </footer>
+
+    <!-- Pop-up Modal -->
+    <div id="welcomeModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalBtn">&times;</span>
+            <p class="modal-message">Welcome, <span id="memberName"></span>!</p>
+            <p class="modal-subtext">Jesus bless you for joining us!</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const groupMembers = document.querySelectorAll('.group-member');
+            const welcomeModal = document.getElementById('welcomeModal');
+            const memberNameSpan = document.getElementById('memberName');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+
+            // Function to show the modal
+            function showModal(name) {
+                memberNameSpan.textContent = name;
+                welcomeModal.classList.remove('hidden');
+                // Add a small delay to ensure the animation plays
+                setTimeout(() => {
+                    welcomeModal.style.display = 'flex'; // Ensure it's visible for animation
+                }, 10);
+            }
+
+            // Function to hide the modal
+            function hideModal() {
+                welcomeModal.classList.add('hidden');
+                welcomeModal.style.display = 'none'; // Hide completely after animation
+            }
+
+            // Add click listeners to each group member
+            groupMembers.forEach(member => {
+                member.addEventListener('click', function() {
+                    const name = this.dataset.name;
+                    showModal(name);
+                });
+            });
+
+            // Add click listener to the close button
+            closeModalBtn.addEventListener('click', hideModal);
+
+            // Hide modal if clicked outside of the content
+            window.addEventListener('click', function(event) {
+                if (event.target === welcomeModal) {
+                    hideModal();
+                }
+            });
+
+            // Ensure the modal is hidden on initial load
+            hideModal();
+        });
+    </script>
+</body>
+</html>
